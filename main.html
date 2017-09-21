@@ -15,12 +15,28 @@
 		border:1px;solid #000
 	}
 </style>
-<script src="./lib/jquery-3.2.1.js"></script>
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+<!--<script src="./lib/jquery-3.2.1.js"></script>
+-->
 <script>
 
 var DISP_DOM = document.getElementById("disp");
+var CTX = DISP_DOM.getContext('2d');
 var DISP_WIDTH    = DISP_DOM.width;
 var DISP_HEIGHT   = DISP_DOM.height;
+
+var img_list=
+{
+	"title_soba":"./soba.png"
+}
+function img_loader(list)
+{
+	
+};
 
 
 var states = 
@@ -31,25 +47,56 @@ var states =
 		{
 			this.a = 0;
 			console.log("title init");
+			console.log(images.title_soba);
+			console.log(CTX);
+			CTX.drawImage(images.title_soba,50,500);
 		},
-		run:function()
+		click:function(e){
+			console.log("title click");
+			CTX.drawImage(images.title_soba,50,500);
+		},
+		next:function(){return "main";},
+	},
+	"main":
+	{
+		init:function()
 		{
-			console.log("title run");
+			this.a = 0;
+			console.log("main init");
 		},
-		click:function(e){},
-		exit:function(){},
+		click:function(e){
+			console.log("main click");
+		},
+		next:function(){
+			return "main";
+		},
 	},
 }
 
-var App =
+var App = function()
 {
+	this.state = "title";
+	states[this.state].init();
+	states[this.state].click({aaa:"aaaa"});
+
 	this.click=function(e)
 	{
-		console.log("hello"+e.offsetX)
-		title_state.run();
-	}
+		console.log(states);
+		console.log(states["title"]);
+		console.log(this.state);
+		states[this.state].click(e);
+		next_state = states[this.state].next();
+		if(next_state != this.state)
+		{
+			states[next_state].init();
+			this.state = next_state;
+		}
+	};
 };
 
-var app = new App();
-$("#disp").on('click',app.click);
+$(function()
+{
+	var app = new App();
+});
+$("#disp").on('click',function(){app.click();});
 </script>
