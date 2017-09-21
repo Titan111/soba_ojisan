@@ -23,20 +23,22 @@ var DISP_WIDTH    = DISP_DOM.width;
 var DISP_HEIGHT   = DISP_DOM.height;
 
 
-var title_state = 
+var states = 
 {
-	init:function()
+	"title":
 	{
-		this.a = 0;
-		console.log("title init");
+		init:function()
+		{
+			this.a = 0;
+			console.log("title init");
+		},
+		run:function()
+		{
+			console.log("title run");
+		},
+		click:function(e){},
+		exit:function(){},
 	},
-	run:function()
-	{
-		console.log("title run"+this.a);
-		this.a++;
-	},
-	click:function(e){},
-	exit:function(){},
 }
 
 var App =
