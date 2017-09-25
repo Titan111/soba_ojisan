@@ -56,10 +56,10 @@ function CookScene(core)
 	cook_scene.message_count = 0;
 	cook_scene.doing_timer = false;
 	var message = new Label();
-	message.x = 150;
-	message.y = 100;
-	message.width = 400;
-	message.font ='64px "Arial"';
+	message.x = 0;
+	message.y = 300;
+	message.width = 600;
+	message.font ='32px "Arial"';
 	message.text = "そばおじさん";
 	message.on('touchstart',function()
 	{
