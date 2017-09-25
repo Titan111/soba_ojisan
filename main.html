@@ -22,21 +22,21 @@
 	window.onload = function()
 	{
 		var core = new Core(DISP_W,DISP_H);
-		core.preload("soba.png");
-		core.preload("ojisan.png");
-		core.preload("doujou.jpg");
+		core.preload("img/soba.png");
+		core.preload("img/ojisan.png");
+		core.preload("img/doujou.jpg");
 
 		core.onload = function()
 		{
 			var doujou = new Sprite(1920 , DISP_H);
-			doujou.image = core.assets["doujou.jpg"];
+			doujou.image = core.assets["img/doujou.jpg"];
 			doujou.x = -960+300;
 			doujou.y = 0;
 			core.rootScene.addChild(doujou);
 
 			var soba_scale = 0.5;
 			var soba = new Sprite(400,400);
-			soba.image = core.assets["soba.png"];
+			soba.image = core.assets["img/soba.png"];
 			soba.x = -50;
 			soba.y = 400;
 			soba.scaleX = soba_scale;
@@ -44,7 +44,7 @@
 			core.rootScene.addChild(soba);
 
 			var ojisan = new Sprite(264,263);
-			ojisan.image = core.assets["ojisan.png"];
+			ojisan.image = core.assets["img/ojisan.png"];
 			ojisan.x = 300;
 			ojisan.y = 400;
 			core.rootScene.addChild(ojisan);
