@@ -10,12 +10,7 @@ window.onload = function()
 
 	core.onload = function()
 	{
-		console.log("ccc");
-		var title_scene = TitleScene(core);
-
-
-		core.pushScene(cook_scene);
-		core.pushScene(title_scene);
+		core.pushScene(TitleScene(core));
 	};
 	core.start();
 };
