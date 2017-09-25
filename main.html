@@ -19,6 +19,40 @@
 	var DISP_W = 600;
 	var DISP_H = 800;
 	enchant();
+	function TitleScene(core)
+	{
+			var title_scene = new Scene();
+			var doujou = new Sprite(1920 , DISP_H);
+			doujou.image = core.assets["img/doujou.jpg"];
+			doujou.x = -960+300;
+			doujou.y = 0;
+			title_scene.addChild(doujou);
+
+			var soba_scale = 0.5;
+			var soba = new Sprite(400,400);
+			soba.image = core.assets["img/soba.png"];
+			soba.x = -50;
+			soba.y = 400;
+			soba.scaleX = soba_scale;
+			soba.scaleY = soba_scale;
+			title_scene.addChild(soba);
+
+			var ojisan = new Sprite(264,263);
+			ojisan.image = core.assets["img/ojisan.png"];
+			ojisan.x = 300;
+			ojisan.y = 400;
+			title_scene.addChild(ojisan);
+
+			var label = new Label();
+			label.x = 150;
+			label.y = 100;
+			label.width = 400;
+			label.font ='64px "Arial"';
+			label.text = "そばおじさん";
+			title_scene.addChild(label);
+
+			return title_scene;
+	}
 	window.onload = function()
 	{
 		var core = new Core(DISP_W,DISP_H);
@@ -28,34 +62,8 @@
 
 		core.onload = function()
 		{
-			var doujou = new Sprite(1920 , DISP_H);
-			doujou.image = core.assets["img/doujou.jpg"];
-			doujou.x = -960+300;
-			doujou.y = 0;
-			core.rootScene.addChild(doujou);
-
-			var soba_scale = 0.5;
-			var soba = new Sprite(400,400);
-			soba.image = core.assets["img/soba.png"];
-			soba.x = -50;
-			soba.y = 400;
-			soba.scaleX = soba_scale;
-			soba.scaleY = soba_scale;
-			core.rootScene.addChild(soba);
-
-			var ojisan = new Sprite(264,263);
-			ojisan.image = core.assets["img/ojisan.png"];
-			ojisan.x = 300;
-			ojisan.y = 400;
-			core.rootScene.addChild(ojisan);
-
-			var label = new Label();
-			label.x = 150;
-			label.y = 100;
-			label.width = 400;
-			label.font ='64px "Arial"';
-			label.text = "そばおじさん";
-			core.rootScene.addChild(label);
+			title_scene = TitleScene(core);
+			core.pushScene(title_scene);
 		};
 		core.start();
 	};
